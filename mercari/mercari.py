@@ -86,8 +86,9 @@ def search(keywords, sort="created_time", order="desc", status="on_sale", limit=
         "status": status,
     }
     has_next_page = True
-
-    while has_next_page:
-        items, has_next_page = fetch(searchURL, data)
-        yield from items
-        data['page'] += 1
+    items, has_next_page = fetch(searchURL, data)
+    yield from items
+    # while has_next_page:
+    #     items, has_next_page = fetch(searchURL, data)
+    #     yield from items
+    #     data['page'] += 1
