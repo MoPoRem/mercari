@@ -142,8 +142,9 @@ def search(
     }
 
     has_next_page = True
-    items, has_next_page, next_page_token = fetch(searchURL, data)
+
     while has_next_page:
-        items, has_next_page = fetch(searchURL, data)
+        items, has_next_page, next_page_token = fetch(searchURL, data)
         yield from items
+        break
         data["pageToken"] = next_page_token
